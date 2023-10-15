@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://cublpxt5ey702"]
+
+[ext_resource type="Script" path="res://scenes/loading-scene.gd" id="1_v2vi2"]
+
+[node name="loading-scene" type="Node2D"]
+script = ExtResource("1_v2vi2")
+
+[node name="background" type="ColorRect" parent="."]
+offset_right = 1600.0
+offset_bottom = 900.0
+color = Color(0, 0, 0, 1)
+
+[node name="loading" type="Node2D" parent="."]
+
+[node name="logo" type="Sprite2D" parent="loading"]
+position = Vector2(800, 240)
+
+[node name="description" type="Label" parent="loading"]
+offset_left = 160.0
+offset_top = 400.0
+offset_right = 1440.0
+offset_bottom = 432.0
+theme_override_colors/font_color = Color(0.890196, 0.529412, 0.141176, 1)
+text = "加载中
+"
+vertical_alignment = 1
+
+[node name="progress_bar" type="ProgressBar" parent="loading"]
+offset_left = 160.0
+offset_top = 450.0
+offset_right = 1440.0
+offset_bottom = 482.0
+
+[node name="file_dialog" type="FileDialog" parent="."]
+title = "请选择Factorio的data目录"
+position = Vector2i(400, 150)
+size = Vector2i(800, 600)
+ok_button_text = "选择当前文件夹"
+cancel_button_text = "取消"
+mode_overrides_title = false
+file_mode = 2
+access = 2
+
+[connection signal="dir_selected" from="file_dialog" to="." method="_on_file_dialog_dir_selected"]
